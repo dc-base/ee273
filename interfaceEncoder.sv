@@ -1,0 +1,10 @@
+interface encoder(input clk);
+	//logic clk;
+	logic reset;
+	logic pushin;
+	logic [8:0] datain;
+	logic startin;
+	logic pushout;
+	logic [9:0] dataout;
+	logic startout;
+endinterface: encoder;
