@@ -1,0 +1,311 @@
+interface: encoder;
+	logic clk;
+	logic reset;
+	logic pushin;
+	logic [8:0] datain;
+	logic startin;
+	logic pushout;
+	logic [9:0] dataout;
+	logic startout;
+endinterface: encoder;
+
+
+class encoderSequenceItem extends uvm_sequence_item;
+    `uvm_object_utils_begin(encoderSequenceItem)
+
+     rand bit[7:0] data; //Only putting 8 bits here. The last bit for control code can be concatanated in the driver when being sent 
+ 
+     function new(string name = "encoderSequenceItem");
+          super.new(name);
+     endfunction: new
+endclass: encoderSequenceItem
+
+
+
+class encoderSequence extends uvm_sequence#(encoderSequenceItem);
+`uvm_object_utils(encoderSequence);
+encoderSequenceItem encoderSI;
+
+function new(string name="encoderSequence");
+	super.new(name);
+endfunction: new
+
+task body();
+	encoderSI=encoderSequenceItem::type_id::create("encoderSI");
+	repeat(1) begin 
+		start_item(encoderSI);
+		encoderSI.randomize();
+		finish_item(encoderSI);
+	end
+	$display("1 Patttern Done.");	
+endtask: body
+endclass: aluSequence
+
+
+class encoderSequencer extends uvm_sequencer#(encoderSequenceItem);
+`uvm_component_utils(encoderSequencer)
+function new(string name="encoderSequencer",uvm_component parent=null);
+	super.new(name,parent);
+endfunction 
+endclass: encoderSequencer
+
+
+class encoderDriver extends uvm_driver#(encoderSequenceItem;
+     `uvm_component_utils(encoderSequenceItem)
+      virtual encoder ecd;
+ 
+     function new(string name="encoderDiver", uvm_component parent);
+          super.new(name, parent);
+     endfunction: new
+ 
+     task run_phase(uvm_phase phase);
+          drive();
+     endtask: run_phase
+
+     virtual task drive();
+     	encoderSequenceItem eSI; //sequenceItem 
+     	ecd.pushin = 'b0; 
+     	ecd.startin = 'b0;
+     	ecd.datain = 'b0;
+     	integer state = 0;
+     	logic controlCode = 1;
+
+     	assign nineBitData = {controlCode, 'b00111100};
+
+     	forever begin 
+
+     	@(posedge ecd.clk)	
+     		case(state)
+     		0: begin
+     			ecd.pushin <= 'b1;
+     			ecd.startin <='b1;
+     			ecd.datain  <= nineBitData;
+     			state = state  + 1; 
+     		end 
+     		1: begin
+     			ecd.startin <= 'b0;
+     			ecd.datain <= nineBitData; 
+     			state = state + 1; 
+     		end 
+     		2: begin
+     			ecd.datain <= nineBitData; 
+     			state = state + 1;
+     		end 
+     		3: begin 
+     			ecd.datain <= nineBitData;
+     			state = state + 1; 
+     		end 
+     		4: begin
+     			seq_item_port.try_next_item(eSI);
+     			while(eSI != null)
+     			begin
+     				assign controlCode = 0;
+     				//seq_item_port.get_next_item(eSI);
+     				assign nineBitData = {controlCode,eSI.data};
+     				ecd.datain <= nineBitData;
+     			    seq_item_port.try_next_item(eSI);
+     			end
+     			 state = state + 1;
+     		end 
+     		5: begin
+     			assign controlCode = 1;
+     			assign nineBitData = {controlCode,'b10111100};
+     			ecd.datain <= nineBitData; 
+     			ecd.pushin <= 0; 
+     		end 
+     		endcase
+     	end 
+
+     endtask: drive
+
+endclass: simpleadder_driver
+
+
+class encoderSequenceMessage; 
+	reg [8:0] datain;  
+endclass: encoderSequenceMessage
+
+
+
+class encoderMonitorInput extends uvm_monitor;
+
+`uvm_component_utils(encoderMonitorInput)
+
+uvm_analysis_port#(encoderSequenceMessage) monitorAtInput;
+
+virtual encoder ecd;
+encoderSequenceMessage eSM;
+
+
+function new(string name, uvm_component parent);
+	super.new(name,parent);
+endfunction: new 
+
+function void build_phase(uvm_phase phase);
+	monitorAtInput = new("encoderSequenceMesssage",this);
+endfunction: build_phase
+
+task run_phase(uvm_phase phase);
+	forever @(posedge ecd.clk) begin
+			if((!ecd.reset && ecd.startin==1) || (!ecd.reset && ecd.pushin==1))
+			begin
+				eSM = new();
+				eSM.datain = ecd.datain;
+				monitorAtInput.write(eSM);
+			end 
+	end		
+endtask: run_phase
+
+endclass: encoderMonitorInput 
+
+
+
+//Message For Output Monitor
+class encoderSequenceMessageOutput;
+	reg [9:0] dataout;
+endclass: encoderSequenceMessageOutput
+
+//Monitor At Output
+class encoderMonitorOutput extends uvm_monitor;
+`uvm_component_utils(encoderMonitorOutput)
+virtual encoder ecd;
+encoderSequenceMessageOutput eSMOut;
+
+`uvm_analysis_port #(encoderSequenceMessageOutput) monitorAtOutput;
+
+function new(string name="encoderMonitorOutput",uvm_component parent=null);
+	super.new(name,parent);
+endfunction: new
+
+function void connect_phase(uvm_phase phase);
+endfunction: connect_phase
+
+function void build_phase(uvm_phase phase);
+	monitorAtOutput = new("encoderSequenceMessageOutput",this);
+endfunction: build_phase
+
+task run_phase(uvm_phase phase);
+	forever @(posedge(ecd.clk)) begin 
+		eSMOut = new();
+		eSMOut.dataout = ecd.dataout;
+		monitorAtOutput.write(eSMOut);
+	end
+endtask: run_phase
+
+endclass: encoderMonitorOutput
+
+
+
+
+class encoderScoreboard extends uvm_scoreboard;
+`uvm_component_utils(encoderScoreboard)
+
+uvm_tlm_analysis_fifo #(encodeSequenceMessage) eSMInputFIFO;
+uvm_tlm_analysis_fifo #(encoderSequenceMesssageOutput) eSMOutputFIFO;
+
+function new(string name="encoderScoreboard",uvm_component parent=null);
+begin
+	super.new(name,parent); 
+end
+
+function void build_phase(uvm_phase phase);
+	eSMInputFIFO = new("eSMInputFIFO",this);
+	eSMOutputFIFO = new("eSMOutputFIFO",this);
+endfunction: build_phase
+
+task run_phase(uvm_phase phase);
+	//Get item from input FIFO 
+	//Process to see if control code and if so encode accordingly and check against output
+	//Once done with 4 packets of control code get data and encode accordingly and check against output 
+	//Once a k23.7 is detected at output take the next 8 bits from data and convert to crc and encode and compare to output and 
+endtask: run_phase
+
+logic RD = 0;
+
+function bit[9:0] encoderExpectedControl(reg[7:0] data);  //change return type needs to return output
+//bit RD: 0 = -1 and 1 = +1
+case(data)
+//k28.1
+'b00111100: begin
+				if(RD==0)
+				begin 
+					return 'b0011111001;
+					assign RD=1;	
+				end
+				else
+				begin 
+					return 'b1100000110;
+					assign RD=0;
+				end 
+			end 
+//k23.7 
+'b11110111: begin
+				if(RD==0)
+				begin 
+					return 'b1110101000;
+					assign RD=1;	
+				end
+				else
+				begin 
+					return 'b0001010111;
+					assign RD=0;
+				end 
+			end
+//k28.5 
+'b10111100: begin
+				if(RD==0)
+				begin 
+					return 'b0011111010;
+					assign RD=1;	
+				end
+				else
+				begin 
+					return 'b1100000101;
+					assign RD=0;
+				end 
+			end		
+
+endcase
+endfunction encoderExpectedControl
+
+
+//Calculate RD after combining the 6 bit and 4bit
+function bit[5:0] encoderExpectedData_firstFive(reg[4:0] data);
+begin
+case(data)
+
+'b00000: begin
+				if(RD==0)
+				begin 
+					return 'b100111;
+					
+				end
+				else
+				begin 
+					return 'b011000;
+				
+				end 
+		end
+'b00001: begin
+				if(RD==0)
+				begin 
+					return 'b011101;
+				
+				end
+				else
+				begin 
+					return 'b100010;
+					
+				end 
+		end
+
+endcase
+end
+
+function bit[3:0] encoderExpectedData_secondThree(reg[2:0] data);
+begin
+
+end
+
+
+endclass: encoderScoreboard 
