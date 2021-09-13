@@ -1,0 +1,211 @@
+                         Chronologic VCS (TM)
+            Version R-2020.12 -- Wed Feb 17 20:55:20 2021
+               Copyright (c) 1991-2020 by Synopsys Inc.
+                         ALL RIGHTS RESERVED
+
+This program is proprietary and confidential information of Synopsys Inc.
+and may be used and disclosed only as authorized in a license agreement
+controlling such use and disclosure.
+
+The design hasn't changed and need not be recompiled. 
+If you really want to, delete file simv.daidir/.vcs.timestamp and
+run VCS again.
+
+Chronologic VCS simulator copyright 1991-2020
+Contains Synopsys proprietary information.
+Compiler version R-2020.12; Runtime version R-2020.12;  Feb 17 20:55 2021
+UVM_INFO /home/morris/uvm-1.2/src/base/uvm_root.svh(392) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+UVM-1.2
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+  See http://www.eda.org/svdb/view.php?id=3313 for more details.
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test alu_t...
+-------------------rnt----------------
+------------body------------
+Operation: op_xor Input_A: 26923053002 Input_B: 455868, Carry_In: 1
+Operation: op_xor Input_A: 20395183578 Input_B: -490693, Carry_In: 0
+Operation: op_xor Input_A: -7115217527 Input_B: 392760, Carry_In: 0
+Operation: op_xor Input_A: 8690580842 Input_B: 111307, Carry_In: 1
+Operation: op_xor Input_A: -20112463559 Input_B: 85944, Carry_In: 1
+Operation: op_xor Input_A: -18176966783 Input_B: 761542, Carry_In: 0
+Operation: op_xor Input_A: 6187262057 Input_B: -452798, Carry_In: 0
+Operation: op_xor Input_A: 20034592947 Input_B: -387681, Carry_In: 0
+Operation: op_xor Input_A: -13957485263 Input_B: -691178, Carry_In: 0
+Operation: op_xor Input_A: 22249211744 Input_B: -610439, Carry_In: 1
+Operation: op_xor Input_A: -34170543379 Input_B: -351982, Carry_In: 0
+Operation: op_xor Input_A: -33394646350 Input_B: -532639, Carry_In: 0
+Operation: op_xor Input_A: 8778780054 Input_B: -872739, Carry_In: 0
+Operation: op_xor Input_A: -32916333334 Input_B: 909938, Carry_In: 1
+Operation: op_xor Input_A: 31145609029 Input_B: 290794, Carry_In: 0
+Operation: op_xor Input_A: -33167541639 Input_B: -228619, Carry_In: 1
+Operation: op_xor Input_A: -9340181106 Input_B: 851124, Carry_In: 1
+Operation: op_xor Input_A: -24625033623 Input_B: -663497, Carry_In: 1
+Operation: op_xor Input_A: -23805419233 Input_B: -116978, Carry_In: 0
+Operation: op_xor Input_A: 11287538691 Input_B: -846344, Carry_In: 1
+Operation: op_xor Input_A: 25543879391 Input_B: 336961, Carry_In: 1
+Operation: op_xor Input_A: 21318127638 Input_B: 836851, Carry_In: 1
+Operation: op_xor Input_A: 20879950391 Input_B: -592174, Carry_In: 1
+Operation: op_xor Input_A: 8693876875 Input_B: 703790, Carry_In: 1
+Operation: op_xor Input_A: -30714534802 Input_B: 6171, Carry_In: 0
+Operation: op_xor Input_A: -17295296942 Input_B: 434578, Carry_In: 0
+Operation: op_xor Input_A: -31072043755 Input_B: 147057, Carry_In: 1
+Operation: op_xor Input_A: -33576678587 Input_B: 1004241, Carry_In: 1
+Operation: op_xor Input_A: -15878754987 Input_B: 580898, Carry_In: 0
+Operation: op_xor Input_A: 6982897370 Input_B: 612490, Carry_In: 0
+Operation: op_xor Input_A: -31618911990 Input_B: 203992, Carry_In: 0
+Operation: op_xor Input_A: 9125134062 Input_B: -654664, Carry_In: 0
+Operation: op_xor Input_A: -23258977292 Input_B: -472130, Carry_In: 0
+Operation: op_xor Input_A: -10794010251 Input_B: 340395, Carry_In: 1
+Operation: op_xor Input_A: 21671990873 Input_B: 235126, Carry_In: 0
+Operation: op_xor Input_A: -32839239615 Input_B: 943756, Carry_In: 1
+Operation: op_xor Input_A: 16997234944 Input_B: -719271, Carry_In: 1
+Operation: op_xor Input_A: -11524181254 Input_B: 245667, Carry_In: 1
+Operation: op_xor Input_A: 27596711537 Input_B: 136446, Carry_In: 1
+Operation: op_xor Input_A: -33584761876 Input_B: 33694, Carry_In: 1
+Operation: op_xor Input_A: 26920418001 Input_B: 239174, Carry_In: 0
+Operation: op_xor Input_A: 10364641552 Input_B: -30758, Carry_In: 1
+Operation: op_xor Input_A: -16840840611 Input_B: -615783, Carry_In: 0
+Operation: op_xor Input_A: 4530482401 Input_B: 69611, Carry_In: 1
+Operation: op_xor Input_A: -21517621390 Input_B: 659032, Carry_In: 0
+Operation: op_xor Input_A: -31615232628 Input_B: 612526, Carry_In: 1
+Operation: op_xor Input_A: -13041166153 Input_B: 30382, Carry_In: 0
+Operation: op_xor Input_A: 1070134202 Input_B: 741426, Carry_In: 0
+Operation: op_xor Input_A: 9328361456 Input_B: -705436, Carry_In: 0
+Operation: op_xor Input_A: 32650342577 Input_B: -735932, Carry_In: 1
+Operation: op_xor Input_A: 25605917224 Input_B: -128315, Carry_In: 0
+Operation: op_xor Input_A: 13681688990 Input_B: -578236, Carry_In: 1
+Operation: op_xor Input_A: 2741927914 Input_B: -145565, Carry_In: 0
+Operation: op_xor Input_A: -13673826501 Input_B: 591318, Carry_In: 0
+Operation: op_xor Input_A: 33697140172 Input_B: -85410, Carry_In: 0
+Operation: op_xor Input_A: 21886740190 Input_B: 1019240, Carry_In: 1
+Operation: op_xor Input_A: 7700436541 Input_B: -69521, Carry_In: 1
+Operation: op_xor Input_A: 33405407735 Input_B: 494483, Carry_In: 0
+Operation: op_xor Input_A: -24178213566 Input_B: 540558, Carry_In: 1
+Operation: op_xor Input_A: -18783360539 Input_B: -7170, Carry_In: 1
+Operation: op_xor Input_A: 6650463740 Input_B: 77803, Carry_In: 1
+Operation: op_xor Input_A: 19829591883 Input_B: 769282, Carry_In: 0
+Operation: op_xor Input_A: 14155379649 Input_B: 237259, Carry_In: 0
+Operation: op_xor Input_A: -27038136126 Input_B: -32569, Carry_In: 0
+Operation: op_xor Input_A: 34048989204 Input_B: -675421, Carry_In: 0
+Operation: op_xor Input_A: -27214636451 Input_B: 788034, Carry_In: 0
+Operation: op_xor Input_A: 26051427845 Input_B: -1007943, Carry_In: 0
+Operation: op_xor Input_A: -27243506600 Input_B: 157767, Carry_In: 1
+Operation: op_xor Input_A: -5424869047 Input_B: 493063, Carry_In: 1
+Operation: op_xor Input_A: 18626794621 Input_B: -666594, Carry_In: 1
+Operation: op_xor Input_A: 14930852755 Input_B: -350354, Carry_In: 0
+Operation: op_xor Input_A: 999651750 Input_B: 221896, Carry_In: 0
+Operation: op_xor Input_A: 12311316405 Input_B: -637008, Carry_In: 0
+Operation: op_xor Input_A: -17746930920 Input_B: 885402, Carry_In: 1
+Operation: op_xor Input_A: -16516358552 Input_B: -832225, Carry_In: 0
+Operation: op_xor Input_A: 401348671 Input_B: 684277, Carry_In: 1
+Operation: op_xor Input_A: -26291072 Input_B: -472956, Carry_In: 0
+Operation: op_xor Input_A: 12975423074 Input_B: 348968, Carry_In: 1
+Operation: op_xor Input_A: -14980333249 Input_B: -666324, Carry_In: 1
+Operation: op_xor Input_A: 31650614000 Input_B: -877805, Carry_In: 0
+Operation: op_xor Input_A: -8383637087 Input_B: 219452, Carry_In: 1
+Operation: op_xor Input_A: -21188114745 Input_B: 60010, Carry_In: 0
+Operation: op_xor Input_A: 33312697783 Input_B: -168366, Carry_In: 0
+Operation: op_xor Input_A: -27089143587 Input_B: 38675, Carry_In: 1
+Operation: op_xor Input_A: -28593153418 Input_B: -716291, Carry_In: 0
+Operation: op_xor Input_A: 29360332492 Input_B: 475902, Carry_In: 0
+Operation: op_xor Input_A: 30257836707 Input_B: 226740, Carry_In: 1
+Operation: op_xor Input_A: 16019670166 Input_B: 1047683, Carry_In: 0
+Operation: op_xor Input_A: -15829883981 Input_B: -936255, Carry_In: 1
+Operation: op_xor Input_A: 4287111492 Input_B: -111058, Carry_In: 0
+Operation: op_xor Input_A: 9068960294 Input_B: -595586, Carry_In: 1
+Operation: op_xor Input_A: -28310964291 Input_B: -170909, Carry_In: 0
+Operation: op_xor Input_A: -18261629544 Input_B: -259995, Carry_In: 1
+Operation: op_xor Input_A: -13330825995 Input_B: 750277, Carry_In: 1
+Operation: op_xor Input_A: 27504555279 Input_B: 335685, Carry_In: 1
+Operation: op_xor Input_A: 26290879937 Input_B: -598751, Carry_In: 1
+Operation: op_xor Input_A: -32274455943 Input_B: 170196, Carry_In: 1
+Operation: op_xor Input_A: 158837626 Input_B: 1012389, Carry_In: 1
+Operation: op_xor Input_A: -32706101762 Input_B: -951308, Carry_In: 0
+Operation: op_xor Input_A: -7907299943 Input_B: 269195, Carry_In: 1
+Operation: op_add Input_A: -18060 Input_B: 18123, Carry_In: 1
+Operation: op_add Input_A: -250080 Input_B: 250143, Carry_In: 1
+Operation: op_add Input_A: 273558 Input_B: -273495, Carry_In: 1
+Operation: op_add Input_A: -368251 Input_B: 368314, Carry_In: 1
+Operation: op_add Input_A: -462971 Input_B: 463034, Carry_In: 1
+Operation: op_add Input_A: -249299 Input_B: 249362, Carry_In: 1
+Operation: op_add Input_A: 344709 Input_B: -344646, Carry_In: 1
+Operation: op_add Input_A: -483380 Input_B: 483443, Carry_In: 1
+Operation: op_add Input_A: -646681 Input_B: 646744, Carry_In: 1
+Operation: op_add Input_A: -204210 Input_B: 204273, Carry_In: 1
+Operation: op_add Input_A: 524216 Input_B: -524153, Carry_In: 1
+Operation: op_add Input_A: 704415 Input_B: -704352, Carry_In: 1
+Operation: op_add Input_A: 619104 Input_B: -619041, Carry_In: 1
+Operation: op_add Input_A: -590968 Input_B: 591031, Carry_In: 1
+Operation: op_add Input_A: 23763 Input_B: -23700, Carry_In: 1
+Operation: op_add Input_A: 431300 Input_B: -431237, Carry_In: 1
+Operation: op_add Input_A: 536462 Input_B: -536399, Carry_In: 1
+Operation: op_add Input_A: 136181 Input_B: -136118, Carry_In: 1
+Operation: op_add Input_A: -1031267 Input_B: 1031330, Carry_In: 1
+Operation: op_add Input_A: -543356 Input_B: 543419, Carry_In: 1
+Operation: op_add Input_A: -5270948014 Input_B: 25742, Carry_In: 1
+Operation: op_add Input_A: -32597414952 Input_B: 927406, Carry_In: 1
+Operation: op_add Input_A: -25070308489 Input_B: -549699, Carry_In: 1
+Operation: op_add Input_A: -15562102887 Input_B: -893460, Carry_In: 1
+Operation: op_add Input_A: -3833125962 Input_B: 86139, Carry_In: 1
+Operation: op_add Input_A: -5474361954 Input_B: -226797, Carry_In: 1
+Operation: op_add Input_A: -15417042697 Input_B: 36532, Carry_In: 1
+Operation: op_add Input_A: -22511244456 Input_B: 452251, Carry_In: 1
+Operation: op_add Input_A: -17448604933 Input_B: -1001991, Carry_In: 1
+Operation: op_add Input_A: -13479540466 Input_B: -693864, Carry_In: 1
+Operation: op_add Input_A: -6992179247 Input_B: -1038779, Carry_In: 1
+Operation: op_add Input_A: -12196324319 Input_B: -66452, Carry_In: 1
+Operation: op_add Input_A: -18425963454 Input_B: 632447, Carry_In: 1
+Operation: op_add Input_A: -805041889 Input_B: -870352, Carry_In: 1
+Operation: op_add Input_A: -27381414783 Input_B: -841390, Carry_In: 1
+Operation: op_add Input_A: -22571832474 Input_B: 915904, Carry_In: 1
+Operation: op_add Input_A: -26610144983 Input_B: 339890, Carry_In: 1
+Operation: op_add Input_A: -32318454475 Input_B: 633578, Carry_In: 1
+Operation: op_add Input_A: -24939982931 Input_B: -529523, Carry_In: 1
+Operation: op_add Input_A: -23515339140 Input_B: -63339, Carry_In: 1
+Operation: op_add Input_A: -33326318030 Input_B: -689524, Carry_In: 0
+Operation: op_add Input_A: -13494144375 Input_B: -664346, Carry_In: 0
+Operation: op_add Input_A: -14514524264 Input_B: -31160, Carry_In: 0
+Operation: op_add Input_A: -33143650756 Input_B: -33754, Carry_In: 0
+Operation: op_add Input_A: -7121297118 Input_B: 626149, Carry_In: 0
+Operation: op_add Input_A: -26849171080 Input_B: 257787, Carry_In: 0
+Operation: op_add Input_A: -17253661381 Input_B: 641770, Carry_In: 0
+Operation: op_add Input_A: -8019383963 Input_B: -432062, Carry_In: 0
+Operation: op_add Input_A: -11102058613 Input_B: -454858, Carry_In: 0
+Operation: op_add Input_A: -19683647157 Input_B: 497827, Carry_In: 0
+UVM_INFO /home/morris/uvm-1.2/src/base/uvm_objection.svh(1270) @ 0: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+UVM_INFO /home/morris/uvm-1.2/src/base/uvm_report_server.svh(847) @ 0: reporter [UVM/REPORT/SERVER] 
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :    3
+UVM_WARNING :    0
+UVM_ERROR :    0
+UVM_FATAL :    0
+** Report counts by id
+[RNTST]     1
+[TEST_DONE]     1
+[UVM/RELNOTES]     1
+
+$finish called from file "/home/morris/uvm-1.2/src/base/uvm_root.svh", line 517.
+$finish at simulation time                    0
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 00 ps
+CPU Time:      0.410 seconds;       Data structure size:   0.1Mb
+Wed Feb 17 20:55:20 2021

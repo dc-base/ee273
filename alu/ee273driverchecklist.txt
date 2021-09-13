@@ -1,0 +1,23 @@
+Group:
+
+Daron Chang
+Akshit Sushil Rohra
+Matthew Eng
+Ziyin Zhang
+Wen Zhi Qian
+
+1) new function 
+
+2) correct class name
+
+3) call to superclass
+
+4) run phase
+
+5) loop with sequential item port to fetch and finish items
+
+6) at class declaration parameter for sequence item type
+
+7) create a declaration of the item object
+
+8) macro to register `uvm_component_utils(class_name)
