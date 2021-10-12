@@ -36,14 +36,14 @@ module dut(clk,reset,pushin,datain,startin,pushout,dataout,startout);
   always @(*) begin
     din=datain[7:0];
     case(state)
-      s00:begin //28.1 code
+      s00:begin //SEE PUSHIN AND STARTIN
         if(pushin&&startin)begin
           rd_d=0;
           dataout_d=0;
           nst=s0;
         end
       end
-      s0: begin
+      s0: begin //READ CODE 28.1
         if((datain[8]==1)&&(datain[7:0]== 8'h3c)&&(rd==0))begin
           pushout=1;pushout_d=1;startout=1;startout_d=0;
           dataout_d = 10'b0011111001; 
@@ -51,26 +51,26 @@ module dut(clk,reset,pushin,datain,startin,pushout,dataout,startout);
           nst=s1;
         end
       end
-      s1:begin
+      s1:begin //READ 3 MORE CODES OF 28.1
           if((datain[8]==1)&&(datain[7:0]== 8'h3c)&&(rd==1))begin
             dataout_d = 10'b1100000110; 
             rd_d=0;
            end else if((datain[8]==1)&&(datain[7:0]== 8'h3c)&&(rd==0))begin
             dataout_d = 10'b0011111001; 
             rd_d=1;
-           end else if((datain[8]==1)&&(datain[7:0]== 8'hbc)) begin 
+           end else if((datain[8]==1)&&(datain[7:0]== 8'hbc)) begin //END CODE OF 28.5, NO DATA
              nst=s3;
            end else nst=s2;
       end
                   
-      s2:begin
+      s2:begin //READ IN DATA
         if(pushin&&~startin&&datain[8]==0)begin
           dataout_d = dout; 
           rd_d=RD(dataout, rd);
           q=datain[7:0];
           //if (qu.size==0) 
           crc = CRC_calc(q);
-        end else if((datain[8]==1)&&(datain[7:0]== 8'hbc)) begin 
+        end else if((datain[8]==1)&&(datain[7:0]== 8'hbc)) begin //END 28.1 CODE SEEN
              nst=s3;
         end else nst=s00;
       end
