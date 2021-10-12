@@ -1,0 +1,39 @@
+//Immediate
+check1: assert (A == B) $display ("OK. A equals B");
+check2: assert (A == B) $display ("OK. A equals B");
+    else $error("It's gone wrong");
+//Concurrent
+check3:assert property (!(Read && Write));
+
+//Implication
+s1 |-> s2; //same clock
+
+s1 |=> s2; //s2 on next clock
+
+sequence acknowledge
+    ##[1:2] Ack;
+endsequence
+
+property handshake;
+    @(posedge clk) disable iff(~rst) request |-> acknowledge;
+endproperty
+
+check4: assert property (handshake);
+
+//Syntax
+[*3] [*3:5] //repeat operator
+[3:$] //finite unbounded
+b[->1:3] ##1 c//non consec, between 1 and 3 occurance and then c occurs
+b[=1:3] ##1 c//non consec, between 1 and 3 occurance and c can occur while checking
+
+//Sequence comb
+s1 intersect s2 //finish at same cycle
+s1 or s2
+first_match(s1) //only care that this happens once in entire sim
+
+//coverage
+covcheck1: cover property (s1);
+
+//system func
+$rose, $fell //only check LSB
+$onehot, $onehot0, $count_ones, $stable, $past(var, cycle, enable)

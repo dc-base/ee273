@@ -1,0 +1,65 @@
+  private boolean binarySearch(int[] arr, int numberToFind) {
+
+    int left = 0
+    int right = arr.length - 1;
+
+    while (left <= right) {
+      int mid = left + (right - left) / 2;
+      if (arr[mid] == numberToFind) 
+        return true;
+      if (arr[mid] < numberToFind) 
+        left = mid + 1;
+      else 
+        right = mid - 1;
+    }
+    return false;
+  }
+  
+  
+Node* InsertNode(Node* root, int data)
+{
+    // If the tree is empty, assign new node address to root
+    if (root == NULL) {
+        root = CreateNode(data);
+        return root;
+    }
+ 
+    // Else, do level order traversal until we find an empty
+    // place, i.e. either left child or right child of some
+    // node is pointing to NULL.
+    queue<Node*> q;
+    q.push(root);
+ 
+    while (!q.empty()) {
+        Node* temp = q.front();
+        q.pop();
+ 
+        if (temp->left != NULL)
+            q.push(temp->left);
+        else {
+            temp->left = CreateNode(data);
+            return root;
+        }
+ 
+        if (temp->right != NULL)
+            q.push(temp->right);
+        else {
+            temp->right = CreateNode(data);
+            return root;
+        }
+    }
+}
+
+ With async fifo read and empty flags could have issue when moving in non-gray code
+ assign graycounter = counter ^ (counter >> 1);
+ 
+ void mergeSort(int array[], int const begin, int const end)
+{
+    if (begin >= end)
+        return; // Returns recursively
+  
+    auto mid = begin + (end - begin) / 2;
+    mergeSort(array, begin, mid);
+    mergeSort(array, mid + 1, end);
+    merge(array, begin, mid, end);
+}

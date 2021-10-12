@@ -1,0 +1,37 @@
+//add a string to configdb
+uvm_config_db #(string) :: set(null, "uvm_test_top", "TAG", "STRNGVAR");
+
+//check for vif
+if(!uvm_config_db #(virtual IF_TYPE):: exists(this, "*", "IF_TYPE"))
+	`uvm_error("VIF", "NO VIF", UVM_HIGH)
+//register vif
+
+
+
+//child class override
+set_type_override_by_type(BASE_CLASS::get_type(), CHILD_CLASS::get_type());
+
+//Factory registration macro
+	Everything is `uvm_component_utils(CLASS_NAME)
+	except sequence and seuqnce item
+		`uvm_object_utils(CLASS_NAME)
+		
+* = all components can access
+
+
+task run_phase(uvm_phase phase);
+	ecdSequence = encoderSequence::type_id::create("ecdSequence");
+	phase.raise_objection(this);
+	ecdSequence.start(ecdSequencer);
+	#1000;
+	phase.drop_objection(this);
+endtask : run_phase
+
+task run_phase(uvm_phase phase);
+	ecdSequence = encoderSequence::type_id::create("ecdSequence");
+	phase.raise_objection(this);
+	ecdSequence.start(ecdSequencer);
+	#1000;
+	phase.drop_objection(this);
+endtask : run_phase
+		

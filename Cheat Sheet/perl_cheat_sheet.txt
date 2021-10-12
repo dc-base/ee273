@@ -1,0 +1,42 @@
+#fileIO
+open(F, "<my.txt"); #read mode
+open(F, ">my.txt"); #write mode
+
+while(<F>){
+	$line = $_;
+}
+
+#inheritance
+Package Parent;
+
+sub parentSub{
+
+}
+
+package Child;
+
+@ISA = (Parent);
+
+Child->parentSub();
+
+
+#combine arrays
+@combined = (@arr1, @arr2);
+#string concat
+$comb = $str1.$str2;
+#Get num ARGS
+$#ARGV 
+
+#warnings etc
+use strict;
+use warnings;
+#hash
+%people = (Jeff => "123", Bob => "55"); 
+#prefixes
+$ scalar
+% hash
+@ arrays
+& subroutines
+
+#remove newline
+chomp $var;
