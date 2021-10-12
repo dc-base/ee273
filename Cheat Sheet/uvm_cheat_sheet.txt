@@ -4,9 +4,17 @@ uvm_config_db #(string) :: set(null, "uvm_test_top", "TAG", "STRNGVAR");
 //check for vif
 if(!uvm_config_db #(virtual IF_TYPE):: exists(this, "*", "IF_TYPE"))
 	`uvm_error("VIF", "NO VIF", UVM_HIGH)
-//register vif
 
+* = all components can access
+//REGISTER INTERFACE if0 IN TB TOP
+uvm_config_db(#virtual my_if)::set(null, "*", "my_if", if0);
 
+//TLM ANALYSIS PORTS
+uvm_analysis_port(#item) port0;
+uvm_analysis_imp(#item) port0;
+//TLM ANALYSIS FIFO PORTS
+uvm_blocking_put_port(#item) port0;
+uvm_blocking_get_port(#item) port0;
 
 //child class override
 set_type_override_by_type(BASE_CLASS::get_type(), CHILD_CLASS::get_type());
@@ -16,12 +24,12 @@ set_type_override_by_type(BASE_CLASS::get_type(), CHILD_CLASS::get_type());
 	except sequence and seuqnce item
 		`uvm_object_utils(CLASS_NAME)
 		
-* = all components can access
 
 
 task run_phase(uvm_phase phase);
 	ecdSequence = encoderSequence::type_id::create("ecdSequence");
 	phase.raise_objection(this);
+	ecdSequence.randomize();
 	ecdSequence.start(ecdSequencer);
 	#1000;
 	phase.drop_objection(this);
